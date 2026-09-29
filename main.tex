@@ -1,0 +1,67 @@
+\documentclass[a4paper, 11pt]{article}
+
+% Paquetes requeridos
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[a4paper, margin=2.2cm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+
+% Definición de colores institucionales y de estado
+\definecolor{colorPrimario}{HTML}{1A365D}
+\definecolor{azulPrestamo}{HTML}{E2E8F0}
+\definecolor{verdeOk}{HTML}{D4EDDA}
+\definecolor{amarilloAlerta}{HTML}{FFF3CD}
+\definecolor{rojoCritico}{HTML}{F8D7DA}
+
+% Importar métricas dinámicas
+\input{metricas.tex}
+
+% Configuración de encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\color{colorPrimario}\textbf{Informe de Inventario - Laboratorio}}
+\rhead{\color{colorPrimario}\today}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+% Encabezado del documento
+\begin{center}
+    {\LARGE \bfseries \color{colorPrimario} Reporte General de Inventario de Laboratorio} \\[0.3cm]
+    {\small \textbf{Responsable:} Encargado de Laboratorio y Equipamiento \quad | \quad \textbf{Fecha de emisión:} \today}
+\end{center}
+
+\vspace{0.3cm}
+
+% Caja de resumen ejecutivo
+\begin{tcolorbox}[
+    colback=colorPrimario!5!white,
+    colframe=colorPrimario,
+    title=\textbf{\color{white} Resumen Ejecutivo de Métricas},
+    arc=2mm,
+    boxrule=1pt,
+    fonttitle=\bfseries
+]
+    \begin{itemize}[leftmargin=1.5em, itemsep=0.3em]
+        \item \textbf{Total de ítems válidos disponibles/registrados:} \totalItemsValidos
+        \item \textbf{Ítems clasificados en Préstamo (Living Lab):} \totalPrestamos
+    \end{itemize}
+\end{tcolorbox}
+
+\vspace{0.4cm}
+
+\section*{\color{colorPrimario} Detalle de Equipamiento e Insumos}
+\vspace{-0.2cm}
+
+% Inclusión de la tabla de inventario generada automáticamente
+\input{tabla_inventario.tex}
+
+\end{document}
